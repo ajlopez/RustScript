@@ -40,3 +40,16 @@ exports['parse name'] = function (test) {
     
     test.equal(parser.parse("Name"), null);    
 };
+
+exports['parse empty function'] = function (test) {
+    var parser = parsers.createParser('fn main() { }');
+    
+    var result = parser.parse("Function");
+    
+    test.ok(result);
+    test.equal(result.type, "Function");
+    test.equal(result.value.evaluate(null), null);
+    test.equal(result.value.getName(), 'main');
+    
+    test.equal(parser.parse("Function"), null);
+};
