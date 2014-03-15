@@ -1,0 +1,29 @@
+{
+  "name": "rustscript",
+  "description": "Rust interpreter in JavaScript",
+  "keywords": [
+    "rust",
+    "parser",
+    "interpreter",
+    "javascript"
+  ],
+  "version": "0.0.1alpha",
+  "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ajlopez/RustScript.git"
+  },
+  "main": "./lib/rustscript.js",
+  "engines": {
+    "node": ">= 0.6.0 && < 0.13.0"
+  },
+  "scripts": {
+    "test": "simpleunit test"
+  },
+  "dependencies": {
+    "simplegrammar": "0.0.4"
+  },
+  "devDependencies": {
+    "simpleunit": "0.0.2"
+  }
+}
