@@ -41,15 +41,36 @@ exports['parse name'] = function (test) {
     test.equal(parser.parse("Name"), null);    
 };
 
+exports['parse string'] = function (test) {
+    var parser = parsers.createParser('"foo"');
+    
+    var result = parser.parse("String");
+    
+    test.ok(result);
+    
+    test.equal(result.value, 'foo');
+    test.equal(result.type, "String");
+    
+    test.equal(parser.parse("String"), null);    
+};
+
 exports['parse empty function'] = function (test) {
     var parser = parsers.createParser('fn main() { }');
     
     var result = parser.parse("Function");
     
+    var context = contexts.createContext();
+    
     test.ok(result);
     test.equal(result.type, "Function");
-    test.equal(result.value.evaluate(null), null);
+    test.equal(result.value.evaluate(context), null);
     test.equal(result.value.getName(), 'main');
+    test.ok(context.getLocalValue('main'));
+    
+    var fn = context.getLocalValue('main');
+    
+    test.equal(typeof fn, "function");
     
     test.equal(parser.parse("Function"), null);
 };
+
