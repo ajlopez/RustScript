@@ -15,3 +15,11 @@ exports['parse and evaluate simple function'] = function (test) {
     test.equal(typeof fn, 'function');
     test.equal(fn(), 1);
 };
+
+exports['parse and evaluate function with two expressions'] = function (test) {
+    var fn = parse('fn one() { 1; 2 }');
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+    test.equal(fn(), 2);
+};
