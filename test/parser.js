@@ -103,8 +103,13 @@ exports['parse empty function'] = function (test) {
     
     test.ok(result);
     test.equal(result.type, "Function");
-    test.equal(result.value.evaluate(context), null);
-    test.equal(result.value.getName(), 'main');
+
+    var fn = result.value.evaluate(context);
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+
+    test.equal(result.value.getName(), 'main');    
     test.ok(context.getLocalValue('main'));
     
     var fn = context.getLocalValue('main');
@@ -114,3 +119,27 @@ exports['parse empty function'] = function (test) {
     test.equal(parser.parse("Function"), null);
 };
 
+exports['parse function with expression'] = function (test) {
+    var parser = parsers.createParser('fn one() { 1 }');
+    
+    var result = parser.parse("Function");
+    
+    var context = contexts.createContext();
+    
+    test.ok(result);
+    test.equal(result.type, "Function");
+
+    var fn = result.value.evaluate(context);
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+
+    test.equal(result.value.getName(), 'one');
+    test.ok(context.getLocalValue('one'));
+    
+    var fn = context.getLocalValue('one');
+    
+    test.equal(typeof fn, "function");
+    
+    test.equal(parser.parse("Function"), null);
+};
