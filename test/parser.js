@@ -14,6 +14,18 @@ exports['parse integer number'] = function (test) {
     test.equal(parser.parse("Integer"), null);    
 };
 
+exports['parse integer number as term'] = function (test) {
+    var parser = parsers.createParser('123');
+    
+    var result = parser.parse("Term");
+    
+    test.ok(result);
+    test.equal(result.value.evaluate(null), 123);
+    test.equal(result.type, "Term");
+    
+    test.equal(parser.parse("Term"), null);    
+};
+
 exports['parse integer number with spaces'] = function (test) {
     var parser = parsers.createParser('  123   ');
     
@@ -41,6 +53,21 @@ exports['parse name'] = function (test) {
     test.equal(parser.parse("Name"), null);    
 };
 
+exports['parse name as term'] = function (test) {
+    var parser = parsers.createParser('foo');
+    
+    var result = parser.parse("Term");
+    
+    test.ok(result);
+    
+    var context = contexts.createContext();
+    
+    test.equal(result.value.evaluate(context), null);
+    test.equal(result.type, "Term");
+    
+    test.equal(parser.parse("Term"), null);    
+};
+
 exports['parse string'] = function (test) {
     var parser = parsers.createParser('"foo"');
     
@@ -52,6 +79,19 @@ exports['parse string'] = function (test) {
     test.equal(result.type, "String");
     
     test.equal(parser.parse("String"), null);    
+};
+
+exports['parse string as term'] = function (test) {
+    var parser = parsers.createParser('"foo"');
+    
+    var result = parser.parse("Term");
+    
+    test.ok(result);
+    
+    test.equal(result.value, 'foo');
+    test.equal(result.type, "Term");
+    
+    test.equal(parser.parse("Term"), null);    
 };
 
 exports['parse empty function'] = function (test) {
