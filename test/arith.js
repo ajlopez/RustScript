@@ -31,3 +31,6 @@ exports['parse and evaluate simple arithmetic expression'] = function (test) {
     test.equal(evaluate('2+6/2'), 5);
 };
 
+exports['parse and evaluate simple arithmetic expression with parenthesis'] = function (test) {
+    test.equal(evaluate('(2+6)/2'), 4);
+};
