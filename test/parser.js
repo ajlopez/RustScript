@@ -168,3 +168,11 @@ exports['parse function with expression in many lines'] = function (test) {
     
     test.equal(parser.parse("Function"), null);
 };
+
+exports['parse simple program'] = function (test) {
+    var parser = parsers.createParser('fn main() { 42 }');
+
+    var result = parser.parse('Program');
+    
+    test.ok(result);
+};
