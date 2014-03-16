@@ -23,3 +23,11 @@ exports['parse and evaluate function with two expressions'] = function (test) {
     test.equal(typeof fn, 'function');
     test.equal(fn(), 2);
 };
+
+exports['parse and evaluate function with two expressions returning unit'] = function (test) {
+    var fn = parse('fn one() { 1; 2; }');
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+    test.equal(fn(), null);
+};
