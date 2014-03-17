@@ -176,3 +176,23 @@ exports['parse simple program'] = function (test) {
     
     test.ok(result);
 };
+
+exports['parse call expression'] = function (test) {
+    var parser = parsers.createParser('println("hello")');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    var context = contexts.createContext();
+    var argument = null;
+    
+    context.setLocalValue('println', function (arg) { argument = arg; });
+    
+    result.value.evaluate(context);
+    
+    test.equal(argument, "hello");
+};
+
