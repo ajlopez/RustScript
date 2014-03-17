@@ -2,10 +2,17 @@
 var parsers = require('../lib/parser');
 var contexts = require('../lib/context');
 
-function evaluate(text) {
+function evaluate(text, test) {
     var parser = parsers.createParser(text);
     var context = contexts.createContext();
-    return parser.parse('Expression').value.evaluate(context);
+    var result = parser.parse('Expression').value.evaluate(context);
+    
+    if (test) {
+        test.equal(parser.next(), null);
+        test.equal(parser.parse('Expression'), null);
+    }
+        
+    return result;
 }
 
 exports['evaluate integers'] = function (test) {
@@ -28,3 +35,10 @@ exports['evaluate simple if'] = function (test) {
     test.equal(evaluate('if false { 42 }'), null);
     test.equal(evaluate('if true { 42; }'), null);
 };
+
+exports['evaluate simple if with else'] = function (test) {
+    test.equal(evaluate('if true { 42 } else { 1 }', test), 42);
+    test.equal(evaluate('if false { 42 } else { 1 }', test), 1);
+    test.equal(evaluate('if true { 42; } else { 1; }', test), null);
+};
+

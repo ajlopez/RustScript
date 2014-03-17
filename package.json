@@ -21,7 +21,7 @@
     "test": "simpleunit test"
   },
   "dependencies": {
-    "simplegrammar": "0.0.6"
+    "simplegrammar": "0.0.7"
   },
   "devDependencies": {
     "simpleunit": "0.0.2"
