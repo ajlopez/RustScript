@@ -125,7 +125,7 @@ exports['parse string'] = function (test) {
     
     test.ok(result);
     
-    test.equal(result.value, 'foo');
+    test.equal(result.value.evaluate(null), 'foo');
     test.equal(result.type, "String");
     
     test.equal(parser.parse("String"), null);    
@@ -138,7 +138,7 @@ exports['parse string as term'] = function (test) {
     
     test.ok(result);
     
-    test.equal(result.value, 'foo');
+    test.equal(result.value.evaluate(null), 'foo');
     test.equal(result.type, "Term");
     
     test.equal(parser.parse("Term"), null);    
