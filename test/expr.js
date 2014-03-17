@@ -22,3 +22,9 @@ exports['evaluate booleans'] = function (test) {
     test.strictEqual(evaluate('true'), true);
     test.strictEqual(evaluate('false'), false);
 };
+
+exports['evaluate simple if'] = function (test) {
+    test.equal(evaluate('if true { 42 }'), 42);
+    test.equal(evaluate('if false { 42 }'), null);
+    test.equal(evaluate('if true { 42; }'), null);
+};
