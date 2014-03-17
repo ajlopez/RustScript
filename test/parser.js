@@ -54,6 +54,38 @@ exports['parse name'] = function (test) {
     test.equal(parser.parse("Name"), null);    
 };
 
+exports['parse name after comment'] = function (test) {
+    var parser = parsers.createParser('// This is a comment \r\nfoo');
+    
+    var result = parser.parse("Name");
+    
+    test.ok(result);
+    
+    var context = contexts.createContext();
+    
+    test.equal(result.value.getName(), 'foo');
+    test.equal(result.value.evaluate(context), null);
+    test.equal(result.type, "Name");
+    
+    test.equal(parser.parse("Name"), null);    
+};
+
+exports['parse name and comment'] = function (test) {
+    var parser = parsers.createParser('foo // This is another comment\r\n');
+    
+    var result = parser.parse("Name");
+    
+    test.ok(result);
+    
+    var context = contexts.createContext();
+    
+    test.equal(result.value.getName(), 'foo');
+    test.equal(result.value.evaluate(context), null);
+    test.equal(result.type, "Name");
+    
+    test.equal(parser.parse("Name"), null);    
+};
+
 exports['parse name with bang'] = function (test) {
     var parser = parsers.createParser('foo!');
     
