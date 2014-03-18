@@ -39,7 +39,8 @@ MIT
 
 ## References
 
-TBD
+- [Rust Programming Language](http://www.rust-lang.org/)
+- [Rust (Programming Language) in Wikipedia](http://en.wikipedia.org/wiki/Rust_(programming_language))
 
 ## Contribution
 
