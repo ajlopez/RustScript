@@ -290,3 +290,29 @@ exports['parse loop expression'] = function (test) {
     test.equal(parser.next(), null);
     test.equal(parser.parse('Expression'), null);
 };
+
+exports['parse return expression without value'] = function (test) {
+    var parser = parsers.createParser('return');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse return expression with value'] = function (test) {
+    var parser = parsers.createParser('return 1');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
