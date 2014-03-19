@@ -17,11 +17,10 @@ exports['simple while'] = function (test) {
     execute('while a <= 10 { a = a + 1 }', context, test);
     test.equal(context.getLocalValue('a'), 11);
 };
-/*
+
 exports['simple while with break'] = function (test) {
     var context = contexts.createContext();
     context.setLocalValue('a', 1);
     execute('while a <= 10 { a = a + 1; if a == 5 { break; } }', context, test);
     test.equal(context.getLocalValue('a'), 5);
 };
-*/
