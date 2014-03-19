@@ -1,15 +1,23 @@
 
-var parsers = require('../lib/parser');
+var parsers = require('../lib/parser'),
+    contexts = require('../lib/context');
 
-function evaluate(text) {
+function evaluate(text, context) {
     var parser = parsers.createParser(text);
     var expr = parser.parse('Expression');
-    return expr.value.evaluate(null);
+    return expr.value.evaluate(context);
 };
 
 exports['parse and evaluate equal'] = function (test) {
     test.strictEqual(evaluate('42==42'), true); 
     test.strictEqual(evaluate('42==1'), false); 
+};
+
+exports['parse and evaluate equal using variable'] = function (test) {
+    var context = contexts.createContext();
+    context.setLocalValue('a', 42);
+    test.strictEqual(evaluate('a==42', context), true); 
+    test.strictEqual(evaluate('a==1', context), false); 
 };
 
 exports['parse and evaluate not equal'] = function (test) {

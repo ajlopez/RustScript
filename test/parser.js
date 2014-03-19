@@ -265,8 +265,86 @@ exports['parse call expression'] = function (test) {
     test.equal(argument, "hello");
 };
 
+exports['parse if expression'] = function (test) {
+    var parser = parsers.createParser('if true { 1 }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse if expression with variable equal expression'] = function (test) {
+    var parser = parsers.createParser('if a == 1 { 1 }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
 exports['parse while expression'] = function (test) {
     var parser = parsers.createParser('while true { 1 }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse while expression with assign'] = function (test) {
+    var parser = parsers.createParser('while true { a = 1; }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse while expression with composite expression'] = function (test) {
+    var parser = parsers.createParser('while true { 1; 2 }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse while expression with composite expression having a break'] = function (test) {
+    var parser = parsers.createParser('while true { 1; break; }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse while expression with composite expression having an if'] = function (test) {
+    var parser = parsers.createParser('while a <= 10 { a = a + 1; if a == 1 { a = 1; } }');
 
     var result = parser.parse('Expression');
     
