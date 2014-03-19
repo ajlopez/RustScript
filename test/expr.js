@@ -41,10 +41,10 @@ exports['evaluate simple if with else'] = function (test) {
     test.equal(evaluate('if false { 42 } else { 1 }', test), 1);
     test.equal(evaluate('if true { 42; } else { 1; }', test), null);
 };
-/*
+
 exports['evaluate simple if with else if'] = function (test) {
     test.equal(evaluate('if true { 42 } else if true { 1 }', test), 42);
     test.equal(evaluate('if false { 42 } else if true { 1 }', test), 1);
     test.equal(evaluate('if true { 42; } else if false { 1; }', test), null);
 };
-*/
+
