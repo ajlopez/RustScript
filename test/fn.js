@@ -31,3 +31,23 @@ exports['parse and evaluate function with two expressions returning unit'] = fun
     test.equal(typeof fn, 'function');
     test.equal(fn(), null);
 };
+
+exports['parse and evaluate function with one parameter'] = function (test) {
+    var fn = parse('fn succ(x) { x + 1 }');
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+    test.equal(fn(0), 1);
+    test.equal(fn(1), 2);
+    test.equal(fn(2), 3);
+};
+
+exports['parse and evaluate function with two parameters'] = function (test) {
+    var fn = parse('fn add(x, y) { x + y }');
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+    test.equal(fn(0, 1), 1);
+    test.equal(fn(1, 2), 3);
+    test.equal(fn(2, 4), 6);
+};
