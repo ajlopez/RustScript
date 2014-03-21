@@ -12,7 +12,7 @@ fn fibo(n) {
 }
 
 fn main() {
-    let n = 0;
+    let mut n = 0;
     
     while n <= 20 {
         println!(fibo(n));

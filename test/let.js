@@ -19,6 +19,11 @@ exports['let variable with values'] = function (test) {
     evaluate('let a = "foo"', 'a', "foo", test);
 };
 
+exports['let mutable variable with values'] = function (test) {
+    evaluate('let mut a = 1', 'a', 1, test);
+    evaluate('let mut a = "foo"', 'a', "foo", test);
+};
+
 exports['let variable with arithmetic expressions'] = function (test) {
     evaluate('let a = 1+2', 'a', 3, test);
     evaluate('let a = 355/113', 'a', 355/113, test);

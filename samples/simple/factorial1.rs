@@ -9,7 +9,7 @@ fn factorial(n) {
 }
 
 fn main() {
-    let n = 1;
+    let mut n = 1;
     
     while n <= 10 {
         println!(factorial(n));

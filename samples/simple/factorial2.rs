@@ -1,17 +1,18 @@
 
 fn factorial(n) {
-    let f = 1;
+    let mut f = 1;
+    let mut k = n;
     
-    while n > 1 {
-        f = f * n;
-        n = n - 1;
+    while k > 1 {
+        f = f * k;
+        k = k - 1;
     }
     
     f
 }
 
 fn main() {
-    let n = 1;
+    let mut n = 1;
     
     while n <= 10 {
         println!(factorial(n));

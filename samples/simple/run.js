@@ -5,7 +5,7 @@ var rustscript = require('../..'),
 var text = fs.readFileSync(process.argv[2]).toString();
 
 var context = rustscript.createContext();
-context.setLocalValue('println!', console.log);
+context.defineLocalValue('println!', console.log);
 
 var program = rustscript.compile(text, context);
 

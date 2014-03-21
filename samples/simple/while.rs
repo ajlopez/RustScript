@@ -1,7 +1,7 @@
 
 fn main() {
-    let fact = 1;
-    let n = 1;
+    let mut fact = 1;
+    let mut n = 1;
     
     while n <= 10 {
         fact = fact * n;
