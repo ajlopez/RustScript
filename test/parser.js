@@ -239,7 +239,7 @@ exports['parse call expression'] = function (test) {
     var context = contexts.createContext();
     var argument = null;
     
-    context.setLocalValue('println', function (arg) { argument = arg; });
+    context.defineLocalValue('println', function (arg) { argument = arg; });
     
     result.value.evaluate(context);
     
@@ -258,7 +258,7 @@ exports['parse call expression'] = function (test) {
     var context = contexts.createContext();
     var argument = null;
     
-    context.setLocalValue('println', function (arg) { argument = arg; });
+    context.defineLocalValue('println', function (arg) { argument = arg; });
     
     result.value.evaluate(context);
     

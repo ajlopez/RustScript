@@ -15,7 +15,7 @@ exports['parse and evaluate equal'] = function (test) {
 
 exports['parse and evaluate equal using variable'] = function (test) {
     var context = contexts.createContext();
-    context.setLocalValue('a', 42);
+    context.defineLocalValue('a', 42);
     test.strictEqual(evaluate('a==42', context), true); 
     test.strictEqual(evaluate('a==1', context), false); 
 };

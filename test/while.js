@@ -13,22 +13,22 @@ function execute(text, context, test) {
 
 exports['simple while'] = function (test) {
     var context = contexts.createContext();
-    context.setLocalValue('a', 1);
+    context.defineLocalValue('a', 1, true);
     execute('while a <= 10 { a = a + 1 }', context, test);
     test.equal(context.getLocalValue('a'), 11);
 };
 
 exports['simple while with break'] = function (test) {
     var context = contexts.createContext();
-    context.setLocalValue('a', 1);
+    context.defineLocalValue('a', 1, true);
     execute('while a <= 10 { a = a + 1; if a == 5 { break; } }', context, test);
     test.equal(context.getLocalValue('a'), 5);
 };
 
 exports['simple while with continue'] = function (test) {
     var context = contexts.createContext();
-    context.setLocalValue('a', 1);
-    context.setLocalValue('b', 0);
+    context.defineLocalValue('a', 1, true);
+    context.defineLocalValue('b', 0, true);
     execute('while a <= 10 { if a == 5 { a = a + 1; continue; } b = b + a; a = a + 1; }', context, test);
     test.equal(context.getLocalValue('a'), 11);
     test.equal(context.getLocalValue('b'), 50);

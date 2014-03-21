@@ -2,9 +2,8 @@
 var parsers = require('../lib/parser');
 var contexts = require('../lib/context');
 
-function evaluate(text, value, test) {
+function evaluate(text, value, test, context) {
     var parser = parsers.createParser(text);
-    var context = contexts.createContext();
     
     var result = parser.parse('Expression').value.evaluate(context);
     test.equal(parser.parse('Expression'), null);
@@ -15,11 +14,15 @@ function evaluate(text, value, test) {
 }
 
 exports['assign values to variable'] = function (test) {
-    evaluate('a = 1', 1, test);
-    evaluate('a = "foo"', "foo", test);
+    var context = contexts.createContext();
+    context.defineLocalValue('a', 0, true);
+    evaluate('a = 1', 1, test, context);
+    evaluate('a = "foo"', "foo", test, context);
 };
 
 exports['assign arithmetic expressions to variable'] = function (test) {
-    evaluate('a = 1+2', 3, test);
-    evaluate('a = 355/113', 355/113, test);
+    var context = contexts.createContext();
+    context.defineLocalValue('a', 0, true);
+    evaluate('a = 1+2', 3, test, context);
+    evaluate('a = 355/113', 355/113, test, context);
 };
