@@ -41,6 +41,7 @@ MIT
 
 - [Rust Programming Language](http://www.rust-lang.org/)
 - [Rust (Programming Language) in Wikipedia](http://en.wikipedia.org/wiki/Rust_(programming_language))
+- [Why using Rust does passing a mutable struct to a function result in immutable fields?](http://stackoverflow.com/questions/19649005/why-using-rust-does-passing-a-mutable-struct-to-a-function-result-in-immutable-f)
 
 ## Contribution
 
