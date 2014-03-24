@@ -394,3 +394,29 @@ exports['parse return expression with value'] = function (test) {
     test.equal(parser.next(), null);
     test.equal(parser.parse('Expression'), null);
 };
+
+exports['parse logical and operator'] = function (test) {
+    var parser = parsers.createParser('a && b');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+exports['parse logical or operator'] = function (test) {
+    var parser = parsers.createParser('a || b');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
