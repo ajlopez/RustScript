@@ -420,3 +420,15 @@ exports['parse logical or operator'] = function (test) {
     test.equal(parser.next(), null);
     test.equal(parser.parse('Expression'), null);
 };
+
+exports['parse empty module'] = function (test) {
+    var parser = parsers.createParser('mod module { }');
+    
+    var result = parser.parse("Module");
+    
+    test.ok(result);
+    test.equal(result.type, "Module");
+    test.ok(result.value);
+    test.equal(result.value.getName(), "module");
+};
+
