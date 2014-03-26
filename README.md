@@ -41,6 +41,8 @@ MIT
 
 - [Rust Programming Language](http://www.rust-lang.org/)
 - [Rust (Programming Language) in Wikipedia](http://en.wikipedia.org/wiki/Rust_(programming_language))
+- [The Rust Language Tutorial](http://static.rust-lang.org/doc/master/tutorial.html)
+- [The Rust Reference Manual](http://static.rust-lang.org/doc/master/rust.html)
 - [Operator precedence](http://static.rust-lang.org/doc/master/rust.html#operator-precedence)
 - [Why using Rust does passing a mutable struct to a function result in immutable fields?](http://stackoverflow.com/questions/19649005/why-using-rust-does-passing-a-mutable-struct-to-a-function-result-in-immutable-f)
 
