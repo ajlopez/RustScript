@@ -219,6 +219,31 @@ exports['parse function with expression in many lines'] = function (test) {
     test.equal(parser.parse("Function"), null);
 };
 
+exports['parse public function'] = function (test) {
+    var parser = parsers.createParser('pub fn one() { 1 }');
+    
+    var result = parser.parse("Function");
+    
+    var context = contexts.createContext();
+    
+    test.ok(result);
+    test.equal(result.type, "Function");
+
+    var fn = result.value.evaluate(context);
+    
+    test.ok(fn);
+    test.equal(typeof fn, 'function');
+
+    test.equal(result.value.getName(), 'one');
+    test.ok(context.getLocalValue('one'));
+    
+    var fn = context.getLocalValue('one');
+    
+    test.equal(typeof fn, "function");
+    
+    test.equal(parser.parse("Function"), null);
+};
+
 exports['parse simple program'] = function (test) {
     var parser = parsers.createParser('fn main() { 42 }');
 
