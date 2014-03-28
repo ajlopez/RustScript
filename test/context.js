@@ -18,7 +18,7 @@ exports['define and get local value'] = function (test) {
 exports['define mutable, set value and get local value'] = function (test) {
     var context = contexts.createContext();
     
-    context.defineLocalValue('foo', 'none', true);
+    context.defineLocalValue('foo', 'none', { mutable: true });
     context.setLocalValue('foo', 'bar');
     test.equal(context.hasLocalValue('foo'), true);
     test.equal(context.getLocalValue('foo'), 'bar');
@@ -60,4 +60,14 @@ exports['get value from parent'] = function (test) {
     test.equal(parent.hasLocalValue('foo'), true);
     test.equal(parent.getLocalValue('foo'), 'bar');
 };
+
+exports['set and get public value'] = function (test) {
+    var context = contexts.createContext();
+    
+    context.defineLocalValue('foo', 'bar', { public: true });
+    test.equal(context.getValue('foo'), 'bar');
+    test.equal(context.getPublicValue('foo'), 'bar');
+    test.equal(context.hasLocalValue('foo'), true);
+    test.equal(context.hasPublicValue('foo'), true);
+}
 

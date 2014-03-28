@@ -15,14 +15,14 @@ function evaluate(text, value, test, context) {
 
 exports['assign values to variable'] = function (test) {
     var context = contexts.createContext();
-    context.defineLocalValue('a', 0, true);
+    context.defineLocalValue('a', 0, { mutable: true });
     evaluate('a = 1', 1, test, context);
     evaluate('a = "foo"', "foo", test, context);
 };
 
 exports['assign arithmetic expressions to variable'] = function (test) {
     var context = contexts.createContext();
-    context.defineLocalValue('a', 0, true);
+    context.defineLocalValue('a', 0, { mutable: true });
     evaluate('a = 1+2', 3, test, context);
     evaluate('a = 355/113', 355/113, test, context);
 };
