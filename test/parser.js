@@ -457,3 +457,15 @@ exports['parse empty module'] = function (test) {
     test.equal(result.value.getName(), "module");
 };
 
+exports['parse module with function'] = function (test) {
+    var parser = parsers.createParser('mod module { fn one() { 1 } }');
+    
+    var result = parser.parse("Module");
+    
+    test.ok(result);
+    test.equal(result.type, "Module");
+    test.ok(result.value);
+    test.equal(result.value.getName(), "module");
+};
+
+
