@@ -468,4 +468,15 @@ exports['parse module with function'] = function (test) {
     test.equal(result.value.getName(), "module");
 };
 
+exports['parse qualified name'] = function (test) {
+    var parser = parsers.createParser('module::foo');
+    
+    var result = parser.parse("QualifiedName");
+    
+    test.ok(result);
+    test.equal(result.type, "QualifiedName");
+    test.ok(result.value);
+    test.equal(parser.next(), null);
+};
+
 
