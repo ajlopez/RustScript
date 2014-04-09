@@ -70,4 +70,16 @@ exports['parse and evaluate module with public function'] = function (test) {
     test.strictEqual(mod, context.getLocalValue('module'));
 };
 
+exports['evaluate qualified name'] = function (test) {
+    var context = contexts.createContext();
+    var mod = parse('mod module { pub fn one() { 1 } }', context);
+    var parser = parsers.createParser('module::one');
+    var qn = parser.parse('Expression').value.evaluate(context);
+    
+    test.ok(mod);
+    test.ok(qn);
+    
+    test.strictEqual(qn, mod.getContext().getPublicValue('one'));
+};
+
 
