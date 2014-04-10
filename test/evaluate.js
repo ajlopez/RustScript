@@ -21,3 +21,15 @@ exports['evaluate empty module'] = function (test) {
     test.equal(result.getName(), 'module');
     test.strictEqual(result, context.getValue('module'));
 };
+
+exports['evaluate module with public function'] = function (test) {
+    var context = contexts.createContext();
+    var result = evaluate('mod module { pub fn one() { return 1 }}',context, test);
+    test.ok(result);
+    test.equal(result.getName(), 'module');
+    test.strictEqual(result, context.getValue('module'));
+    var fn = result.getContext().getPublicValue('one');
+    test.ok(fn);
+    test.equal(typeof fn, "function");
+    test.equal(fn(), 1);
+};
