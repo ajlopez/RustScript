@@ -381,6 +381,19 @@ exports['parse while expression with composite expression having an if'] = funct
     test.equal(parser.parse('Expression'), null);
 };
 
+exports['parse for expression'] = function (test) {
+    var parser = parsers.createParser('for n in range(1, 2) { n }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
 exports['parse loop expression'] = function (test) {
     var parser = parsers.createParser('loop { 1 }');
 
