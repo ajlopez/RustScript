@@ -18,12 +18,3 @@ exports['compile two simple function'] = function (test) {
     
     test.equal(result(), 42);
 };
-
-exports['context with println! functions'] = function (test) {
-    var context = rustscript.createContext();
-    
-    var println = context.getLocalValue('println!');
-    
-    test.ok(println);
-    test.equal(typeof println, 'function');
-};
