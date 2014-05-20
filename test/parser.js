@@ -145,7 +145,7 @@ exports['parse string as term'] = function (test) {
 };
 
 exports['parse empty function'] = function (test) {
-    var parser = parsers.createParser('fn main() { }');
+    var parser = parsers.createParser('fn main() -> { }');
     
     var result = parser.parse("Function");
     
@@ -170,7 +170,7 @@ exports['parse empty function'] = function (test) {
 };
 
 exports['parse function with expression'] = function (test) {
-    var parser = parsers.createParser('fn one() { 1 }');
+    var parser = parsers.createParser('fn one() -> { 1 }');
     
     var result = parser.parse("Function");
     
@@ -195,7 +195,7 @@ exports['parse function with expression'] = function (test) {
 };
 
 exports['parse function with expression in many lines'] = function (test) {
-    var parser = parsers.createParser('fn one() {\r\n 1\r\n }');
+    var parser = parsers.createParser('fn one() -> {\r\n 1\r\n }');
     
     var result = parser.parse("Function");
     
@@ -220,7 +220,7 @@ exports['parse function with expression in many lines'] = function (test) {
 };
 
 exports['parse public function'] = function (test) {
-    var parser = parsers.createParser('pub fn one() { 1 }');
+    var parser = parsers.createParser('pub fn one() -> { 1 }');
     
     var result = parser.parse("Function");
     
@@ -245,7 +245,7 @@ exports['parse public function'] = function (test) {
 };
 
 exports['parse simple program'] = function (test) {
-    var parser = parsers.createParser('fn main() { 42 }');
+    var parser = parsers.createParser('fn main() -> { 42 }');
 
     var result = parser.parse('Program');
     
@@ -471,7 +471,7 @@ exports['parse empty module'] = function (test) {
 };
 
 exports['parse module with function'] = function (test) {
-    var parser = parsers.createParser('mod module { fn one() { 1 } }');
+    var parser = parsers.createParser('mod module { fn one() -> { 1 } }');
     
     var result = parser.parse("Module");
     

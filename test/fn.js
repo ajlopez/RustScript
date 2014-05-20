@@ -10,7 +10,7 @@ function parse(text, context) {
 }
 
 exports['parse and evaluate simple function'] = function (test) {
-    var fn = parse('fn one() { 1 }');
+    var fn = parse('fn one() -> { 1 }');
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -18,7 +18,7 @@ exports['parse and evaluate simple function'] = function (test) {
 };
 
 exports['parse and evaluate function with two expressions'] = function (test) {
-    var fn = parse('fn one() { 1; 2 }');
+    var fn = parse('fn one() -> { 1; 2 }');
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -26,7 +26,7 @@ exports['parse and evaluate function with two expressions'] = function (test) {
 };
 
 exports['parse and evaluate function with two expressions returning unit'] = function (test) {
-    var fn = parse('fn one() { 1; 2; }');
+    var fn = parse('fn one() -> { 1; 2; }');
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -34,7 +34,7 @@ exports['parse and evaluate function with two expressions returning unit'] = fun
 };
 
 exports['parse and evaluate function with one parameter'] = function (test) {
-    var fn = parse('fn succ(x) { x + 1 }');
+    var fn = parse('fn succ(x) -> { x + 1 }');
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -44,7 +44,7 @@ exports['parse and evaluate function with one parameter'] = function (test) {
 };
 
 exports['parse and evaluate function with two parameters'] = function (test) {
-    var fn = parse('fn add(x, y) { x + y }');
+    var fn = parse('fn add(x, y) -> { x + y }');
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -55,7 +55,7 @@ exports['parse and evaluate function with two parameters'] = function (test) {
 
 exports['parse and get function in context'] = function (test) {
     var context = contexts.createContext();
-    var fn = parse('fn add(x, y) { x + y }', context);
+    var fn = parse('fn add(x, y) -> { x + y }', context);
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
@@ -67,7 +67,7 @@ exports['parse and get function in context'] = function (test) {
 
 exports['parse and get public function in context'] = function (test) {
     var context = contexts.createContext();
-    var fn = parse('pub fn add(x, y) { x + y }', context);
+    var fn = parse('pub fn add(x, y) -> { x + y }', context);
     
     test.ok(fn);
     test.equal(typeof fn, 'function');
