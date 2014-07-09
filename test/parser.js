@@ -492,4 +492,17 @@ exports['parse qualified name'] = function (test) {
     test.equal(parser.next(), null);
 };
 
+exports['parse match expression'] = function (test) {
+    var parser = parsers.createParser('match token { "+" => "sum", _ => "unknown" }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
 
