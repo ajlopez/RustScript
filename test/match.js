@@ -21,3 +21,9 @@ exports['simple match'] = function (test) {
     test.equal(result, 'one');
 };
 
+exports['match using default'] = function (test) {
+    var context = rustscript.createContext();
+    context.defineLocalValue('a', 0, { mutable: true });
+    var result = evaluate('match 10 { 1 => "one", 2 => "two", _ => "other" }', context, test);
+    test.equal(result, 'other');
+};
