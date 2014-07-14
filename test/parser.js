@@ -505,4 +505,17 @@ exports['parse match expression'] = function (test) {
     test.equal(parser.parse('Expression'), null);
 };
 
+exports['parse empty struct expression'] = function (test) {
+    var parser = parsers.createParser('struct Name { }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
 
