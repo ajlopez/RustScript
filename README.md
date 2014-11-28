@@ -45,6 +45,7 @@ MIT
 - [The Rust Reference Manual](http://static.rust-lang.org/doc/master/rust.html)
 - [Operator precedence](http://static.rust-lang.org/doc/master/rust.html#operator-precedence)
 - [Why using Rust does passing a mutable struct to a function result in immutable fields?](http://stackoverflow.com/questions/19649005/why-using-rust-does-passing-a-mutable-struct-to-a-function-result-in-immutable-f)
+- [Purging Proc (about unboxed closure)](http://smallcultfollowing.com/babysteps/blog/2014/11/26/purging-proc/)
 
 ## Contribution
 
