@@ -531,4 +531,17 @@ exports['parse empty struct expression'] = function (test) {
     test.equal(parser.parse('Expression'), null);
 };
 
+exports['parse simple struct expression with names'] = function (test) {
+    var parser = parsers.createParser('struct Point { x, y }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
 
