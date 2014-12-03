@@ -10,13 +10,25 @@ function evaluate(text, name, value, test) {
     test.equal(parser.parse('Expression'), null);
     
     test.ok(result);
-    test.strictEqual(result, value);
-    test.strictEqual(context.getLocalValue(name), value);
+    
+    if (Array.isArray(value)) {
+        test.deepEqual(result, value);
+        test.deepEqual(context.getLocalValue(name), value);
+    }
+    else {
+        test.strictEqual(result, value);
+        test.strictEqual(context.getLocalValue(name), value);
+    }
 }
 
 exports['let variable with values'] = function (test) {
     evaluate('let a = 1', 'a', 1, test);
     evaluate('let a = "foo"', 'a', "foo", test);
+};
+
+exports['let variable with array'] = function (test) {
+    evaluate('let a = [1, 2, 3]', 'a', [1, 2, 3], test);
+    evaluate('let a = [1, 1+1, 2+1]', 'a', [1, 2, 3], test);
 };
 
 exports['let mutable variable with values'] = function (test) {
