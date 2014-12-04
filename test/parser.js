@@ -544,4 +544,18 @@ exports['parse simple struct expression with names'] = function (test) {
     test.equal(parser.parse('Expression'), null);
 };
 
+exports['parse simple enum expression'] = function (test) {
+    var parser = parsers.createParser('enum Color { Red, Green, Blue }');
+
+    var result = parser.parse('Expression');
+    
+    test.ok(result);
+    test.equal(result.type, "Expression");
+    test.ok(result.value);
+    
+    test.equal(parser.next(), null);
+    test.equal(parser.parse('Expression'), null);
+};
+
+
 
