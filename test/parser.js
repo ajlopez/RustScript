@@ -157,6 +157,41 @@ exports['parse string as term'] = function (test) {
     test.equal(parser.parse("Term"), null);    
 };
 
+exports['parse array as term'] = function (test) {
+    var parser = parsers.createParser('[1,2,3]');
+    
+    var result = parser.parse("Term");
+    
+    test.ok(result);
+    
+    var val = result.value.evaluate(null);
+    
+    test.ok(Array.isArray(val));
+    test.equal(val.length, 3);
+    test.equal(val[0], 1);
+    test.equal(val[1], 2);
+    test.equal(val[2], 3);
+    
+    test.equal(parser.next(), null);    
+};
+
+exports['parse tuple as term'] = function (test) {
+    var parser = parsers.createParser('(1,2,3)');
+    
+    var result = parser.parse("Term");
+    
+    test.ok(result);
+    
+    var val = result.value.evaluate(null);
+    
+    test.equal(val.size(), 3);
+    test.equal(val.get(0), 1);
+    test.equal(val.get(1), 2);
+    test.equal(val.get(2), 3);
+    
+    test.equal(parser.next(), null);    
+};
+
 exports['parse empty function'] = function (test) {
     var parser = parsers.createParser('fn main() -> { }');
     
