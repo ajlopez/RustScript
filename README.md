@@ -40,6 +40,8 @@ MIT
 ## References
 
 - [Rust Programming Language](http://www.rust-lang.org/)
+- [Rust Documentation](https://www.rust-lang.org/en-US/documentation.html)
+- [The Rust Programming Language](https://doc.rust-lang.org/book/)
 - [Rust (Programming Language) in Wikipedia](http://en.wikipedia.org/wiki/Rust_(programming_language))
 - [The Rust Language Tutorial](http://static.rust-lang.org/doc/master/tutorial.html)
 - [The Rust Reference Manual](http://static.rust-lang.org/doc/master/rust.html)
