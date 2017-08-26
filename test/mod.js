@@ -26,7 +26,7 @@ exports['parse and evaluate empty mod'] = function (test) {
 
 exports['parse and evaluate module with local function'] = function (test) {
     var context = contexts.createContext();
-    var mod = parse('mod module { fn one() -> { 1 } }', context);
+    var mod = parse('mod module { fn one() { 1 } }', context);
     
     test.ok(mod);
     
@@ -49,7 +49,7 @@ exports['parse and evaluate module with local function'] = function (test) {
 
 exports['parse and evaluate module with public function'] = function (test) {
     var context = contexts.createContext();
-    var mod = parse('mod module { pub fn one() -> { 1 } }', context);
+    var mod = parse('mod module { pub fn one() { 1 } }', context);
     
     test.ok(mod);
     
@@ -72,7 +72,7 @@ exports['parse and evaluate module with public function'] = function (test) {
 
 exports['evaluate qualified name'] = function (test) {
     var context = contexts.createContext();
-    var mod = parse('mod module { pub fn one() -> { 1 } }', context);
+    var mod = parse('mod module { pub fn one() { 1 } }', context);
     var parser = parsers.createParser('module::one');
     var qn = parser.parse('Expression').value.evaluate(context);
     
