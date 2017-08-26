@@ -24,6 +24,6 @@
     "simplegrammar": "0.0.10"
   },
   "devDependencies": {
-    "simpleunit": "0.0.6"
+    "simpleunit": "0.0.7"
   }
 }
