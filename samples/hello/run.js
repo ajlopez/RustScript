@@ -1,6 +1,6 @@
 
-var rustscript = require('../..'),
-    fs = require('fs');
+var fs = require('fs');
+var rustscript = require('../..');
     
 var text = fs.readFileSync(process.argv[2]).toString();
 

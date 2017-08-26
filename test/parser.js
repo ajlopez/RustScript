@@ -300,6 +300,14 @@ exports['parse simple program'] = function (test) {
     test.ok(result);
 };
 
+exports['parse hello program'] = function (test) {
+    var parser = parsers.createParser('fn main() { println!("hello, world"); }');
+
+    var result = parser.parse('Program');
+    
+    test.ok(result);
+};
+
 exports['parse call expression'] = function (test) {
     var parser = parsers.createParser('println("hello")');
 
