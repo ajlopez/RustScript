@@ -36,7 +36,7 @@ exports['evaluate module with public function'] = function (test) {
 
 exports['evaluate program with two functions'] = function (test) {
     var context = contexts.createContext();
-    var result = evaluate('fn one() { return 1; } fn two() { return 2; }',context, test);
+    var result = evaluate('fn one() { return 1 } fn two() { return 2 }',context, test);
     test.ok(result);
 	
 	var one = context.getValue('one');
