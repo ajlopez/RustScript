@@ -33,3 +33,19 @@ exports['evaluate module with public function'] = function (test) {
     test.equal(typeof fn, "function");
     test.equal(fn(), 1);
 };
+
+exports['evaluate program with two functions'] = function (test) {
+    var context = contexts.createContext();
+    var result = evaluate('fn one() { return 1; } fn two() { return 2; }',context, test);
+    test.ok(result);
+	
+	var one = context.getValue('one');
+	test.ok(one);
+	test.equal(typeof one, 'function');
+	test.equal(one(), 1);
+	
+	var two = context.getValue('two');
+	test.ok(two);
+	test.equal(typeof two, 'function');
+	test.equal(two(), 2);
+};
