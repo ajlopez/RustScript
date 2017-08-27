@@ -24,7 +24,7 @@ exports['evaluate empty module'] = function (test) {
 
 exports['evaluate module with public function'] = function (test) {
     var context = contexts.createContext();
-    var result = evaluate('mod module { pub fn one() { return 1 }}',context, test);
+    var result = evaluate('mod module { pub fn one() { 1 }}',context, test);
     test.ok(result);
     test.equal(result.getName(), 'module');
     test.strictEqual(result, context.getValue('module'));
@@ -36,7 +36,7 @@ exports['evaluate module with public function'] = function (test) {
 
 exports['evaluate program with two functions'] = function (test) {
     var context = contexts.createContext();
-    var result = evaluate('fn one() { return 1 } fn two() { return 2 }',context, test);
+    var result = evaluate('fn one() { 1 } fn two() { 2 }',context, test);
     test.ok(result);
 	
 	var one = context.getValue('one');
