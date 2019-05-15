@@ -15,15 +15,15 @@
   },
   "main": "./lib/rustscript.js",
   "engines": {
-    "node": ">= 0.6.0 && < 0.13.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
-    "test": "simpleunit test"
+    "test": "simpleunit -r ./test"
   },
   "dependencies": {
     "simplegrammar": "0.0.10"
   },
   "devDependencies": {
-    "simpleunit": "0.0.7"
+    "simpleunit": "0.0.8"
   }
 }
