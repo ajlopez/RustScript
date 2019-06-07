@@ -1,9 +1,10 @@
 
-var parsers = require('../lib/parser');
+const parsers = require('../lib/parser');
 
 function evaluate(text) {
-    var parser = parsers.createParser(text);
-    var expr = parser.parse('Expression');
+    const parser = parsers.createParser(text);
+    const expr = parser.parse('Expression');
+    
     return expr.value.evaluate(null);
 };
 
@@ -39,3 +40,4 @@ exports['parse and evaluate simple arithmetic expression'] = function (test) {
 exports['parse and evaluate simple arithmetic expression with parenthesis'] = function (test) {
     test.equal(evaluate('(2+6)/2'), 4);
 };
+

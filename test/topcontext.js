@@ -1,19 +1,19 @@
 
-var rustscript = require('..');
+const rustscript = require('..');
 
 exports['context with println! function'] = function (test) {
-    var context = rustscript.createContext();
+    const context = rustscript.createContext();
     
-    var println = context.getLocalValue('println!');
+    const println = context.getLocalValue('println!');
     
     test.ok(println);
     test.equal(typeof println, 'function');
 };
 
 exports['context with range function'] = function (test) {
-    var context = rustscript.createContext();
+    const context = rustscript.createContext();
     
-    var rangefn = context.getLocalValue('range');
+    const rangefn = context.getLocalValue('range');
     
     test.ok(rangefn);
     test.equal(typeof rangefn, 'function');
@@ -30,3 +30,4 @@ exports['context with range function'] = function (test) {
     test.equal(range.next(), 3);
     test.ok(!range.hasNext());
 };
+

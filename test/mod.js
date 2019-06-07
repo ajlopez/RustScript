@@ -1,17 +1,19 @@
 
-var parsers = require('../lib/parser');
-var contexts = require('../lib/context');
+const parsers = require('../lib/parser');
+const contexts = require('../lib/context');
 
 function parse(text, context) {
-    var parser = parsers.createParser(text);
+    const parser = parsers.createParser(text);
+    
     if (!context)
         context = contexts.createContext();
+    
     return parser.parse('Module').value.evaluate(context);
 }
 
 exports['parse and evaluate empty mod'] = function (test) {
-    var context = contexts.createContext();
-    var mod = parse('mod module { }', context);
+    const context = contexts.createContext();
+    const mod = parse('mod module { }', context);
     
     test.ok(mod);
     
@@ -25,20 +27,20 @@ exports['parse and evaluate empty mod'] = function (test) {
 };
 
 exports['parse and evaluate module with local function'] = function (test) {
-    var context = contexts.createContext();
-    var mod = parse('mod module { fn one() { 1 } }', context);
+    const context = contexts.createContext();
+    const mod = parse('mod module { fn one() { 1 } }', context);
     
     test.ok(mod);
     
     test.equal(typeof mod, 'object');
     test.equal(mod.getName(), 'module');
     
-    var modctx = mod.getContext();
+    const modctx = mod.getContext();
     test.ok(modctx);
     test.ok(modctx.hasLocalValue('one'));
     test.equal(modctx.hasPublicValue('one'), false);
     
-    var fn = modctx.getLocalValue('one');
+    const fn = modctx.getLocalValue('one');
     test.ok(fn);
     test.equal(typeof fn, 'function');
     
@@ -48,8 +50,8 @@ exports['parse and evaluate module with local function'] = function (test) {
 };
 
 exports['parse and evaluate module with public function'] = function (test) {
-    var context = contexts.createContext();
-    var mod = parse('mod module { pub fn one() { 1 } }', context);
+    const context = contexts.createContext();
+    const mod = parse('mod module { pub fn one() { 1 } }', context);
     
     test.ok(mod);
     
@@ -71,10 +73,10 @@ exports['parse and evaluate module with public function'] = function (test) {
 };
 
 exports['evaluate qualified name'] = function (test) {
-    var context = contexts.createContext();
-    var mod = parse('mod module { pub fn one() { 1 } }', context);
-    var parser = parsers.createParser('module::one');
-    var qn = parser.parse('Expression').value.evaluate(context);
+    const context = contexts.createContext();
+    const mod = parse('mod module { pub fn one() { 1 } }', context);
+    const parser = parsers.createParser('module::one');
+    const qn = parser.parse('Expression').value.evaluate(context);
     
     test.ok(mod);
     test.ok(qn);
