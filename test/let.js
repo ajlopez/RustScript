@@ -1,12 +1,12 @@
 
-var parsers = require('../lib/parser');
-var contexts = require('../lib/context');
+const parsers = require('../lib/parser');
+const contexts = require('../lib/context');
 
 function evaluate(text, name, value, test) {
-    var parser = parsers.createParser(text);
-    var context = contexts.createContext();
+    const parser = parsers.createParser(text);
+    const context = contexts.createContext();
     
-    var result = parser.parse('Expression').value.evaluate(context);
+    const result = parser.parse('Expression').value.evaluate(context);
     test.equal(parser.parse('Expression'), null);
     
     test.ok(result);
@@ -40,3 +40,4 @@ exports['let variable with arithmetic expressions'] = function (test) {
     evaluate('let a = 1+2', 'a', 3, test);
     evaluate('let a = 355/113', 'a', 355/113, test);
 };
+

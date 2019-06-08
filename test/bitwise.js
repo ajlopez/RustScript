@@ -1,10 +1,10 @@
 
-var parsers = require('../lib/parser');
+const parsers = require('../lib/parser');
 
 function evaluate(text, test) {
-    var parser = parsers.createParser(text);
-    var expr = parser.parse('Expression');
-    var value = expr.value.evaluate(null);
+    const parser = parsers.createParser(text);
+    const expr = parser.parse('Expression');
+    const value = expr.value.evaluate(null);
     
     if (test)
         test.equal(parser.next(), null);
