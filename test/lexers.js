@@ -136,26 +136,26 @@ exports['string and name'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
-exports['semicolon as delimiter'] = function (test) {
+exports['semicolon as punctuation'] = function (test) {
     const lexer = lexers.lexer(';');
   
     const token = lexer.next();
     
     test.ok(token);
     test.equal(token.value, ';');
-    test.equal(token.type, TokenType.Delimiter);
+    test.equal(token.type, TokenType.Punctuation);
     
     test.equal(lexer.next(), null);
 };
 
-exports['comma as delimiter'] = function (test) {
+exports['comma as punctuation'] = function (test) {
     const lexer = lexers.lexer(',');
   
     const token = lexer.next();
     
     test.ok(token);
     test.equal(token.value, ',');
-    test.equal(token.type, TokenType.Delimiter);
+    test.equal(token.type, TokenType.Punctuation);
     
     test.equal(lexer.next(), null);
 };
@@ -214,14 +214,14 @@ exports['square brackets as delimiters'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
-exports['dot as delimiter'] = function (test) {
+exports['dot as punctuation'] = function (test) {
     const lexer = lexers.lexer('.');
   
     const token = lexer.next();
     
     test.ok(token);
     test.equal(token.value, '.');
-    test.equal(token.type, TokenType.Delimiter);
+    test.equal(token.type, TokenType.Punctuation);
     
     test.equal(lexer.next(), null);
 };
@@ -268,7 +268,7 @@ exports['exclamation mark as punctuation'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
-exports['name and delimiter'] = function (test) {
+exports['name and punctuation'] = function (test) {
     const lexer = lexers.lexer('foo;');
   
     var token = lexer.next();
@@ -281,7 +281,7 @@ exports['name and delimiter'] = function (test) {
     
     test.ok(token);
     test.equal(token.value, ';');
-    test.equal(token.type, TokenType.Delimiter);
+    test.equal(token.type, TokenType.Punctuation);
     
     test.equal(lexer.next(), null);
 };
