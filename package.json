@@ -15,7 +15,7 @@
   },
   "main": "./lib/rustscript.js",
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 6.14.0"
   },
   "scripts": {
     "test": "simpleunit -r ./test"
